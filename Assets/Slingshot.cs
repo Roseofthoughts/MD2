@@ -54,6 +54,7 @@ using UnityEngine;
         Vector3 mousePos2D = Input.mousePosition;
         mousePos2D.z = -Camera.main.transform.position.z;
         Vector3 mousePos3D = Camera.main.ScreenToWorldPoint( mousePos2D );
+        
         // Find the delta from the launchPos to the mousePos3D
         Vector3 mouseDelta = mousePos3D -launchPos;
         // Limit mouseDelta to the radius of the Slingshot SphereCollider
@@ -73,6 +74,7 @@ using UnityEngine;
             projRB.isKinematic = false;
             projRB.collisionDetectionMode = CollisionDetectionMode.Continuous;
             projRB.linearVelocity = -mouseDelta * velocityMult;
+            FollowCam.POI = projectile; // Set the _MainCamera POI
             projectile = null;                                                
         }
      }
