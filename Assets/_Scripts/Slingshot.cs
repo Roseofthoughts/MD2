@@ -7,6 +7,7 @@ using UnityEngine;
     [Header("Inscribed")]
     public GameObject projectilePrefab;
     public float      velocityMult = 10f;
+    public GameObject projLinePrefab;
 
     // fields set dynamically
     [Header("Dynamic")]
@@ -75,6 +76,8 @@ using UnityEngine;
             projRB.collisionDetectionMode = CollisionDetectionMode.Continuous;
             projRB.linearVelocity = -mouseDelta * velocityMult;
             FollowCam.POI = projectile; // Set the _MainCamera POI
+            // add a ProjectileLine to the Projectile
+            Instantiate<GameObject>(projLinePrefab, projectile.transform);
             projectile = null;                                                
         }
      }
